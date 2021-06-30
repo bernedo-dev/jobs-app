@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cl.zco.rbernedo.empleos.model.Job;
 import cl.zco.rbernedo.empleos.service.IJobsService;
@@ -27,15 +30,22 @@ public class JobsController {
 	private IJobsService jobsService;
 	
 	@GetMapping("/create")
-	public String create() {
+	public String create(Job job) {
 		return "jobs/jobForm";
 	}
 	
 	@PostMapping("/save")
-	public String save(Job job) {
+	public String save(Job job, BindingResult result, RedirectAttributes attributes) {
 		System.out.println("Job:"+job);
+		if(result.hasErrors()) {
+			for(ObjectError error: result.getAllErrors()) {
+				System.out.println("Error: "+error.getDefaultMessage());
+			}
+			return "jobs/jobForm";
+		}
 		jobsService.save(job);
-		return "jobs/jobsList";
+		attributes.addFlashAttribute("msg","Registro Guardado");
+		return "redirect:/jobs/index";
 	}
 	
 	@GetMapping("/index")
@@ -44,7 +54,7 @@ public class JobsController {
 		System.out.println(jobsList);
 		model.addAttribute("jobs", jobsList);
 		return "jobs/jobsList";
-	}
+	} 
 		
 	@GetMapping("/delete")
 	public String delete(@RequestParam("id") int jobId, Model model) {

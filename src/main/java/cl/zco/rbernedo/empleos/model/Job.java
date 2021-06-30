@@ -74,6 +74,7 @@ public class Job {
 
 	public Job setImage(String image) {
 		this.image = image;
+
 		return this;
 	}
 	
