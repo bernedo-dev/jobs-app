@@ -13,8 +13,8 @@ public class Job {
 	private String image = "no-image.png";
 	private String status;
 	private String details;
-	
-	
+	private Category category;
+
 	public Job() {
 		super();
 	}
@@ -77,8 +77,6 @@ public class Job {
 
 		return this;
 	}
-	
-	
 
 	public String getStatus() {
 		return status;
@@ -96,14 +94,27 @@ public class Job {
 		this.details = details;
 	}
 
-	@Override
-	public String toString() {
-		return "Job [id=" + id + ", name=" + name + ", description=" + description + ", publicationDate="
-				+ publicationDate + ", salary=" + salary + ", featured=" + featured + ", image=" + image + ", status="
-				+ status + ", details=" + details + "]";
+	public Category getCategory() {
+		return category;
 	}
 
-	
-		
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 
+	@Override
+	public String toString() {
+		return "Job{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", description='" + description + '\'' +
+				", publicationDate=" + publicationDate +
+				", salary=" + salary +
+				", featured=" + featured +
+				", image='" + image + '\'' +
+				", status='" + status + '\'' +
+				", details='" + details + '\'' +
+				", category=" + category +
+				'}';
+	}
 }

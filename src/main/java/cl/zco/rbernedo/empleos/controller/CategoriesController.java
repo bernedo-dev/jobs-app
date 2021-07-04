@@ -27,11 +27,13 @@ public class CategoriesController {
 		model.addAttribute("categories", categories);
 		return "categories/categoriesList";
 	}
+
 	// @GetMapping("/create")
 	@RequestMapping(value="/create", method=RequestMethod.GET)
 	public String create(Category category) {
 		return "categories/categorieForm";
 	}
+
 	// @PostMapping("/save")
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public String save(Category category, BindingResult result, RedirectAttributes attributes) {

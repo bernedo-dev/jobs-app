@@ -17,7 +17,12 @@ public class CategoriesServiceImpl implements ICategoriesService{
         cat.setId(1);
         cat.setName("Primera Categoría");
         cat.setDescription("La cat de rbernedo");
+        Category cat2 = new Category();
+        cat2.setId(2);
+        cat2.setName("Segunda Categoría");
+        cat2.setDescription("la 2da categoría");
         categoriesList.add(cat);
+        categoriesList.add(cat2);
     }
 
     @Override
