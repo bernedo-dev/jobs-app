@@ -4,12 +4,12 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import cl.zco.rbernedo.empleos.model.Job;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import cl.zco.rbernedo.empleos.model.Job;
 import cl.zco.rbernedo.empleos.service.IJobsService;
 
 @Controller

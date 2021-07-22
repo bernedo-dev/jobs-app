@@ -44,7 +44,7 @@
               </thead>
               <tbody>
                 <tr th:each="job : ${jobs}">
-                  <td>Pendiente</td>
+                  <td th:text="${job.category.name}">Pendiente</td>
                   <td th:text="${job.name}"></td>                  
                   <td th:text="${job.publicationDate}"></td>
                   <td>Creada</td>

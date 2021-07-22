@@ -1,7 +1,8 @@
 package cl.zco.rbernedo.empleos.service;
 
-import java.util.List;
 import cl.zco.rbernedo.empleos.model.Job;
+
+import java.util.List;
 
 public interface IJobsService {
 	List<Job> searchAll();

@@ -4,10 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import cl.zco.rbernedo.empleos.model.Category;
+import cl.zco.rbernedo.empleos.model.Job;
 import cl.zco.rbernedo.empleos.service.ICategoriesService;
 import cl.zco.rbernedo.empleos.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import cl.zco.rbernedo.empleos.model.Job;
 import cl.zco.rbernedo.empleos.service.IJobsService;
 
 @Controller
@@ -39,6 +39,7 @@ public class JobsController {
 	private IJobsService jobsService;
 
 	@Autowired
+	@Qualifier("categoriesServiceJpa")
 	private ICategoriesService categoriesService;
 	
 	@GetMapping("/create")
